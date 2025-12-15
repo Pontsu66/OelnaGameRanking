@@ -143,9 +143,18 @@
 <body>
 	<div id="wrapper">  
 
-		<!-- Poistettu "What is this?" osio -->
-		<!-- Tämä osio on kokonaan poistettu -->
+		<div class="intro">
+			<h2>
+				<span>What is this?</span>
+				<button class="toggle-detail">show&hairsp;/&hairsp;hide</button>
+			</h2>
 
+			<div class="text hidden">
+				<p>So apparently GameFAQs is <a href="http://www.gamefaqs.com/features/bge20_vote" data-external="true">having some weird silly "best game ever" voting competition</a> and I figured this would probably be a much more bearable form of picking favorites. More detailed too since it compares every game to every other game instead of just being about what "number one" is.</p>
+				<p>The sorter uses GameFAQs' list of 128 games, which were apparently nominated in via an assortment of methods and come from multiple generations.</p>
+			</div>
+		</div>
+		
 		<div class="intro">
 			<h2>
 				<span>Ok, how do I use this?</span>
@@ -512,6 +521,153 @@
 
 		const defaultTerms = {
 			'games': [
-			"Clair Obscur: Expedition 33", "Kingdom Come: Deliverance 2", "Undertale", "Deltarune", "Portal 2", 
-            "Silent Hill 2", "Assassin's Creed II", "Assassin's Creed IV: Black Flag", "Chrono Trigger", 
-            "Alan Wake", "Fable", "Minecraft", "Astro Bot", "Life is Strange",
+				"Chrono Trigger",
+				"Ratchet & Clank 3",
+				"Dragon Quest VIII",
+				"Persona 3",
+				"Batman: Arkham City",
+				"Mega Man X",
+				"Final Fantasy X",
+				"Half-Life",
+				"Smash Bros. Melee",
+				"Portal",
+				"Pokemon Gold/Silver",
+				"World Ends with You",
+				"Metal Gear Solid 4",
+				"Kingdom Hearts II",
+				"The Last of Us",
+				"Halo 3",
+				"Final Fantasy VI",
+				"Assassin's Creed II",
+				"Paper Mario: TYD",
+				"Tales of Symphonia",
+				"Star Wars: KOTOR",
+				"Xenogears",
+				"Zelda: The Wind Waker",
+				"Pokemon X/Y",
+				"Smash Bros. Wii U",
+				"Planescape: Torment",
+				"Super Mario Galaxy 2",
+				"Mass Effect",
+				"Minecraft",
+				"Halo: Combat Evolved",
+				"Final Fantasy VII",
+				"Journey",
+				"Super Mario Bros. 3",
+				"Age of Empires II",
+				"Pokemon Red/Blue",
+				"Tetris",
+				"Portal 2",
+				"Sonic the Hedgehog 2",
+				"Uncharted 2",
+				"The Walking Dead",
+				"Fallout 3",
+				"Life is Strange",
+				"Undertale",
+				"Mass Effect 3",
+				"GTA: Vice City",
+				"Final Fantasy VIII",
+				"Super Mario World",
+				"Animal Crossing New Leaf",
+				"Skyrim",
+				"Phoenix Wright",
+				"GoldenEye 007",
+				"Diablo II",
+				"Metroid Prime",
+				"Morrowind",
+				"Half-Life 2",
+				"Demon's Souls",
+				"Super Mario 64",
+				"Mario Kart 8",
+				"Final Fantasy Tactics",
+				"Resident Evil 2",
+				"Zelda: Twilight Princess",
+				"Skies of Arcadia",
+				"Persona 4",
+				"999",
+				"Zelda: Ocarina of Time",
+				"Hearthstone",
+				"Suikoden II",
+				"Monster Hunter 4U",
+				"Okami",
+				"Warcraft III",
+				"Final Fantasy IX",
+				"Kingdom Hearts",
+				"Xenoblade Chronicles",
+				"DK Country 2",
+				"Fire Emblem: Awakening",
+				"Super Mario Maker",
+				"Banjo-Kazooie",
+				"Baldur's Gate II",
+				"Castlevania: SOTN",
+				"Phoenix Wright: Trials",
+				"Zelda: A Link to the Past",
+				"Cave Story",
+				"Deus Ex",
+				"Final Fantasy IV",
+				"Metal Gear Solid V",
+				"Perfect Dark",
+				"Dark Souls",
+				"Civilization V",
+				"Super Metroid",
+				"Call of Duty 4",
+				"Super Mario Galaxy",
+				"Dragon Age: Origins",
+				"Bloodborne",
+				"Final Fantasy XII",
+				"Zelda: Majora's Mask",
+				"Valkyria Chronicles",
+				"Grand Theft Auto V",
+				"Shenmue",
+				"Oblivion",
+				"Super Mario RPG",
+				"GTA: San Andreas",
+				"Shovel Knight",
+				"World of Warcraft",
+				"Chrono Cross",
+				"The Witcher 3",
+				"Binding of Isaac Rebirth",
+				"Metal Gear Solid 2",
+				"Resident Evil",
+				"Fallout: New Vegas",
+				"BioShock Infinite",
+				"Resident Evil 4",
+				"Paper Mario",
+				"Metal Gear Solid",
+				"Splatoon",
+				"EarthBound",
+				"Borderlands 2",
+				"Shadow of the Colossus",
+				"Team Fortress 2",
+				"Red Dead Redemption",
+				"Bayonetta 2",
+				"Metal Gear Solid 3",
+				"Mother 3",
+				"BioShock",
+				"Silent Hill 2",
+				"Starcraft",
+				"Destiny",
+				"Mass Effect 2",
+				"Virtue's Last Reward"
+			]
+		}
+
+		// restore existing custom words
+		let entries = [];
+		const customWordsData = window.localStorage.getItem('custom-words');
+		if (customWordsData) {
+			const customWords = JSON.parse(customWordsData);
+			entries = customWords;
+
+			document.querySelector('#custom-words').value = customWords.join("\n");
+		} else {
+			entries = defaultTerms.games;
+		}
+		
+		// init the actual thing
+		const ranks = new ranking(entries, controls);
+
+		</script>
+	</div>
+</body>
+</html>
