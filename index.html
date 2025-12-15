@@ -84,6 +84,7 @@
 		<script>
 		'use strict';
 
+		// Pelilista
 		const games = [
 			"Clair Obscur: Expedition 33", "Kingdom Come: Deliverance 2", "Undertale", "Deltarune", "Portal 2", 
 			"Silent Hill 2", "Assassin's Creed II", "Assassin's Creed IV: Black Flag", "Chrono Trigger", 
@@ -111,8 +112,17 @@
 			"God of War Ragnarök"
 		];
 
-		// The ranking class and logic would go here (from previous implementation)
-		</script>
-	</div>
-</body>
-</html>
+		class ranking {
+			constructor(entries, controls) {
+				this.reset(entries, controls);
+			}
+
+			reset(entries, controls) {
+				if (entries) this.namMember = entries;
+				if (this.namMember == null || this.namMember.length < 2) {
+					console.error('You need to provide an array of strings to be sorted!');
+					return;
+				}
+				this.lstMember = [];
+				this.parent = [];
+				this
